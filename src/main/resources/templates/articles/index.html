@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+
+<body>
+
+<div class="container">
+
+  <h1>Board</h1>
+  <a href="/articles/new">new article</a>
+  <hr/>
+
+  <table class="table" th:border="1">
+    <thead>
+    <tr>
+      <th th:text="id" th:width="50"></th>
+      <th th:text="title" th:width="200"></th>
+      <th th:text="content" th:width="400"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="articleList : ${articleList}">
+      <td th:text="${articleList.id}"></td>
+      <td>
+        <a th:href="@{'/articles/' + ${articleList.id}}">
+          <span th:text="${articleList.title}"></span>
+        </a>
+      </td>
+      <td th:text="${articleList.content}"></td>
+    </tr>
+    </tbody>
+  </table>
+  <hr/>
+  <div th:if="${msg}" class="alert alert-success">
+    <p th:text="${msg}"></p>
+    <button class="close-button" onclick="closeMessage()">알림창 지우기</button>
+  </div>
+
+  <!-- HTML 부분에 closeMessage() 메소드 추가 -->
+  <script>
+    function closeMessage() {
+      // 알림창을 숨기거나 제거하는 로직
+      var alertElement = document.querySelector('.alert-success');
+
+      if (alertElement) {
+        // 알림창이 존재하면 숨기거나 제거
+        alertElement.style.display = 'none'; // 혹은 alertElement.remove();
+      }
+    }
+  </script>
+
+  <div th:replace="fragments/footer :: footer"/>
+
+</div>
+
+</body>
+</html>

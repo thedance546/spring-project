@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<div>
+    <table class="table" th:border="1">
+        <thead>
+        <tr>
+            <th th:text="id" th:width="50"></th>
+            <th th:text="name" th:width="200"></th>
+            <th th:text="body" th:width="400"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="comment : ${comment}">
+            <td th:text="${comment.id}"></td>
+            <td th:text="${comment.name}"></td>
+            <td th:text="${comment.body}"></td>
+        </tr>
+        </tbody>
+    </table>
+<!--    <a th:href="@{'/articles/' + ${article.id} +'/comments/new'}">new comment</a>-->
+</div>

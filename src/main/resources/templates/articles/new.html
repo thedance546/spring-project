@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+
+<body>
+<div class="container">
+    <a href="/articles">Board</a>
+    <hr/>
+
+    <form action="/articles/create" method="post">
+        <div>
+            <label>제목</label>
+            <input type="text" name="title">
+        </div>
+        <div>
+            <label class="form-label">내용</label>
+            <textarea rows="3" name="content"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div th:replace="fragments/footer :: footer"/>
+</div>
+</body>
+</html>

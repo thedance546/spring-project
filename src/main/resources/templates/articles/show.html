@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+
+<body>
+<a href="/articles">Board</a>
+<hr/>
+<table class="table table-striped" th:border="1">
+    <thead>
+    <tr>
+        <th th:text="id" th:width="50"></th>
+        <th th:text="title" th:width="200"></th>
+        <th th:text="content" th:width="400"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="article : ${article}">
+        <td th:text="${article.id}"></td>
+        <td th:text="${article.title}"></td>
+        <td th:text="${article.content}"></td>
+    </tr>
+    </tbody>
+</table>
+<hr/>
+<a th:href="@{'/articles/' + ${article.id} + '/edit'}">Edit</a>
+<a th:href="@{'/articles/' + ${article.id} + '/delete'}">delete</a>
+<hr/>
+
+<!--<div>-->
+<!--    <table class="table" th:border="1">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th th:text="id" th:width="50"></th>-->
+<!--            <th th:text="name" th:width="200"></th>-->
+<!--            <th th:text="body" th:width="400"></th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr th:each="comment : ${comment}">-->
+<!--            <td th:text="${comment.id}"></td>-->
+<!--            <td th:text="${comment.name}"></td>-->
+<!--            <td th:text="${comment.body}"></td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+<!--&lt;!&ndash;새 댓글 작성하기&ndash;&gt;-->
+<!--<hr/>-->
+<!--<a th:href="@{'/articles/' + ${article.id} +'/comments/new'}">new comment</a>-->
+<!--</div>-->
+
+<!--<div th:replace="comments/comments"/>-->
+
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>
